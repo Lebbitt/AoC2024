@@ -1,5 +1,7 @@
-file = open("data/Day1.txt").read()
-file_strip = file.strip()
+with open("data/Day1.txt") as file:
+    text = file.read()
+
+file_strip = text.strip()
 file_list = file_strip.split("\n")
 
 list_1 = []
@@ -14,13 +16,10 @@ for f in file_list:
 sorted_list_1 = sorted(list_1)
 sorted_list_2 = sorted(list_2)
 
-id = 0
 totals = []
-for number in sorted_list_1:
-    list_2_value = sorted_list_2[id]
+for number, list_2_value in zip(sorted_list_1, sorted_list_2):
     distance = int(list_2_value) - int(number)
     totals.append(abs(distance))
-    id += 1
     print(totals)
 
 answer = sum(totals)
